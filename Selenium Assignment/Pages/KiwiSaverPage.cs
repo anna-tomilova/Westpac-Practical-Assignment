@@ -20,6 +20,7 @@ namespace Selenium_Assignment.Pages
         //Click KiwiSaver Calculator button
         public void clickProfileAndRetirementCalculator()
         {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.FindElement(riskProfileAndRetirementCalculator).Click(); 
         }
     }
