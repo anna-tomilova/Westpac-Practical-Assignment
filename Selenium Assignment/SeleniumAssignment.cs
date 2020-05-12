@@ -98,10 +98,10 @@ namespace Selenium_Assignment
             objKiwiSaverRetirementCalculator = new KiwiSaverRetirementCalculator(driver);
             //Input all parameters
             objKiwiSaverRetirementCalculator.SetCurrentAge("45");
-            objKiwiSaverRetirementCalculator.SelectEmploymentStatus("Self-employed");
+            objKiwiSaverRetirementCalculator.SelectEmploymentStatus("SelfEmployed");
             objKiwiSaverRetirementCalculator.SelectPIR("10.5%");
-            objKiwiSaverRetirementCalculator.SetCurrentKiwisaverBalance("1000000");
-            objKiwiSaverRetirementCalculator.SetVoluntaryContibution("90", "Fortnightly");
+            objKiwiSaverRetirementCalculator.SetCurrentKiwisaverBalance("100000");
+            objKiwiSaverRetirementCalculator.SetVoluntaryContribution("90","Fortnightly");
             objKiwiSaverRetirementCalculator.SelectRiskProfile("Medium");
             objKiwiSaverRetirementCalculator.SetSavingsGoal("290000");
             //Click retirement projections button
@@ -113,9 +113,33 @@ namespace Selenium_Assignment
             Assert.IsTrue(objKiwiSaverRetirementCalculator.ResultValueDisplayed());
             String resultValue = objKiwiSaverRetirementCalculator.getResultValue();
             Assert.IsTrue(resultValue.Contains("212,440"));
-
         }
 
+        [Test]
+        public void TUS2_User3()
+        {
+            driver.Url = "https://www.westpac.co.nz/kiwisaver/calculators/kiwisaver-calculator/";
+
+            //Create KiwiSaver Retirement Calculator object
+            objKiwiSaverRetirementCalculator = new KiwiSaverRetirementCalculator(driver);
+            //Input all parameters
+            objKiwiSaverRetirementCalculator.SetCurrentAge("55");
+            objKiwiSaverRetirementCalculator.SelectEmploymentStatus("Not employed");
+            objKiwiSaverRetirementCalculator.SelectPIR("10.5%");
+            objKiwiSaverRetirementCalculator.SetCurrentKiwisaverBalance("140000");
+            objKiwiSaverRetirementCalculator.SetVoluntaryContribution("10", "Annually");
+            objKiwiSaverRetirementCalculator.SelectRiskProfile("Medium");
+            objKiwiSaverRetirementCalculator.SetSavingsGoal("200000");
+            //Click retirement projections button
+            objKiwiSaverRetirementCalculator.ClickRetirementProjectionsButton();
+            //Verify that projected balance is displayed
+            Assert.IsTrue(objKiwiSaverRetirementCalculator.ResultsTitleDisplayed());
+            String resultsTitleText = objKiwiSaverRetirementCalculator.getResultsTitleText();
+            Assert.IsTrue(resultsTitleText.Contains("At age 65, your KiwiSaver balance is estimated to be:"));
+            Assert.IsTrue(objKiwiSaverRetirementCalculator.ResultValueDisplayed());
+            String resultValue = objKiwiSaverRetirementCalculator.getResultValue();
+            Assert.IsTrue(resultValue.Contains("168,425"));
+        }
 
         [TearDown]
         public void closeBrowser()
