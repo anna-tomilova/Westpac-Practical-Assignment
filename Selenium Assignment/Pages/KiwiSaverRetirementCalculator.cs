@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,10 @@ namespace Selenium_Assignment.Pages
 
         By currentAge = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[1]/div/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div[1]/div/div/input");
         //Employment status
-        By employmentStatus = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div/div[1]");
-        By employedStatus = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div/div[2]/ul/li[2]/div/span");
-        By notEmployedStatus = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div/div[2]/ul/li[3]/div/span");
-        By selfEmployedStatus = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div/div/div[2]/ul/li[2]/div/span");
+        By employmentStatus = By.CssSelector(".wpnib-field-employment-status > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)");
+        By employedStatus = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > li:nth-child(2)");
+        By notEmployedStatus = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > li:nth-child(4)");
+        By selfEmployedStatus = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > li:nth-child(3)");
         //Member contribution
         By salaryPerYear = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[3]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div/div/input");
         By contribution3Percent = By.Id("radio-option-06B");
@@ -37,25 +38,25 @@ namespace Selenium_Assignment.Pages
         By contribution8Percent = By.Id("radio-option-06K");
         By contribution10Percent = By.Id("radio-option-06N");
         //PIR
-        By prescribedInvestorRate = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[5]/div/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div");
-        By rate10AndHalfPercent = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[5]/div/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div/div[2]/ul/div[1]/li/div/span");
+        By prescribedInvestorRate = By.CssSelector(".dropdown-cell > div:nth-child(1) > div:nth-child(1)");
+        By rate10AndHalfPercent = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > div:nth-child(2) > li:nth-child(1)");
         By rate17AndHalfPercent = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[5]/div/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div/div[2]/ul/div[2]/li/div/span");
         By rate28Percent = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[5]/div/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div/div[2]/ul/div[3]/li/div/span");
 
-        By currentKiwisaverBalance = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[7]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div/div/input");
-        By voluntaryContributions = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[8]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[1]/div/input");
-        By contributionFrequency = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[6]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[2]/div/div[1]");
-        By savingsGoal = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[10]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div/div/input");
+        By currentKiwisaverBalance = By.CssSelector(".wpnib-field-kiwi-saver-balance > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)");
+        By voluntaryContributions = By.CssSelector(".control-with-period > div:nth-child(1) > input:nth-child(2)");
+        By contributionFrequency = By.CssSelector("div.ng-pristine:nth-child(2) > div:nth-child(1)");
+        By savingsGoal = By.CssSelector(".wpnib-field-savings-goal > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)");
         //Risk profiles
         By riskProfileLow = By.Id("radio-option-01V");
         By riskProfileMedium = By.Id("radio-option-01Y");
         By riskProfileHigh = By.Id("radio-option-021");
         //Contribution frequency
-        By oneOff = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[8]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[2]/div/div[2]/ul/li[2]/div/span");
-        By weekly = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[8]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[2]/div/div[2]/ul/li[3]/div/span");
-        By fortnightly = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[8]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[2]/div/div[2]/ul/li[4]/div/span");
-        By monthly = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[8]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[2]/div/div[2]/ul/li[5]/div/span");
-        By annually = By.XPath("/html/body/div/div/div/div[1]/div/div[1]/div/div[8]/div/div/div/div[2]/div[1]/div[1]/div/div/div[1]/div[2]/div/div[2]/ul/li[6]/div/span");
+        By oneOff = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > li:nth-child(2)");
+        By weekly = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > li:nth-child(3)");
+        By fortnightly = By.CssSelector(".active > div:nth-child(2) > ul:nth-child(1) > li:nth-child(4)");
+        By monthly = By.CssSelector("li.option-item:nth-child(5)");
+        By annually = By.CssSelector("li.option-item:nth-child(6)");
 
         By retirementPropjectionsButton = By.ClassName("btn-results-reveal");
         By resultsTitle = By.ClassName("result-title");
@@ -95,7 +96,7 @@ namespace Selenium_Assignment.Pages
                 case "Employed":
                     driver.FindElement(employedStatus).Click();
                     break;
-                case "Self-employed":
+                case "SelfEmployed":
                     driver.FindElement(selfEmployedStatus).Click();
                     break;
                 case "Not employed":
@@ -174,8 +175,7 @@ namespace Selenium_Assignment.Pages
         {
             driver.FindElement(savingsGoal).SendKeys(goal);
         }
-
-        public void SetVoluntaryContibution(String contibutionAmount, String frequency)
+        public void SetVoluntaryContribution(String contibutionAmount, String frequency)
         {
             driver.FindElement(voluntaryContributions).SendKeys(contibutionAmount);
             driver.FindElement(contributionFrequency).Click();
@@ -198,6 +198,7 @@ namespace Selenium_Assignment.Pages
                     break;
             }
         }
+              
         public void ClickRetirementProjectionsButton()
         {
             driver.FindElement(retirementPropjectionsButton).Click();
